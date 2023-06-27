@@ -17,8 +17,12 @@ app.use('/api/post',postRouter)
 
 app.use("/api/uploads", require("./Routes/uploadRoute"));
 
+app.use((req,res)=>{
+    res.send('API is running...')
+})
+
 app.use("/uploads", express.static(path.join(__dirname, "./uploads")));
 
 
 
-app.listen(process.env.port,console.log(`Server is running on the port ${process.env.port}`));
+app.listen(process.env.port,console.log(`Server is running on the port ${process.env.port || 7666}`));
